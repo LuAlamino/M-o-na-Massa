@@ -13,16 +13,32 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Este aplicativo usa a câmera para permitir que os usuários adicionem fotos de perfil.",
+        "NSPhotoLibraryUsageDescription": "Este aplicativo acessa a galeria para permitir que os usuários escolham fotos de perfil."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "package": "com.alamino.MyFirstExpoApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2ace77fc-1180-4f2a-8316-72a6666fe8f5"
+      }
+    },
+    "owner": "alamino"
   }
 }

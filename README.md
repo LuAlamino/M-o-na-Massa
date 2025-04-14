@@ -1,8 +1,6 @@
 # 🛠 Mão Na Massa
 
-<p align="center">
-  <img src="(link-para-um-logo-ou-banner.png)" alt="Mão Na Massa Logo" width="300">
-</p>
+
 
 **🔗 Repositório:** [GitHub](https://github.com/LuAlamino/M-o-na-Massa)  
 **🌐 Deploy:** *(em breve)*  

@@ -59,7 +59,7 @@ export default function Diarista({ navigation, route }) {
 
   // Função para excluir um diarista
   const handleDelete = async (id, registroUserId) => {
-    if (user?.id !== registroUserId) {
+    if (user?.id !== registroUserId && user?.role !== "admin") {
       Alert.alert("Erro", "Você não tem permissão para excluir este registro.");
       return;
     }
@@ -143,8 +143,8 @@ export default function Diarista({ navigation, route }) {
                 <Text style={styles.cardText}>Cidade: {item.city}</Text>
               </View>
 
-              {/* Exibe o botão de exclusão apenas para o criador do registro */}
-              {user?.id === item.userId && (
+              {/* Exibe o botão de exclusão apenas para o criador do registro e para o admin */}
+              {(user?.id === item.userId || user?.role === "admin") && (
                 <TouchableOpacity
                   style={styles.deleteButton}
                   onPress={() => handleDelete(item.id, item.userId)}

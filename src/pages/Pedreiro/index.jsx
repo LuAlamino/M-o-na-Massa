@@ -145,7 +145,7 @@ export default function Pedreiro({ navigation }) {
               </View>
 
               {/* Exibe o botão de exclusão apenas para o admin ou o criador do registro */}
-              {(user?.role === "admin" || user?.id === item.userId) && (
+              {(user?.id === item.userId || user?.role === "admin") && (
                 <TouchableOpacity
                   style={styles.deleteButton}
                   onPress={() => handleDelete(item.id, item.userId)}

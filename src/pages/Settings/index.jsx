@@ -60,24 +60,46 @@ export default function Settings({ navigation, route }) {
 
   // Função para enviar o cadastro
   const handleSubmit = async () => {
+    const idadeNumero = parseInt(age, 10);
+    const experienciaNumero = parseInt(experience, 10);
+  
     if (!name || !email || !age || !selectedJob || !experience || !selectedCity || !phone) {
       Alert.alert("Erro", "Por favor, preencha todos os campos.");
       return;
     }
-
+  
+    if (isNaN(idadeNumero) || idadeNumero < 18) {
+      Alert.alert("Idade inválida", "Você deve ter pelo menos 18 anos para se cadastrar.");
+      return;
+    }
+  
+    const experienciaMaximaPermitida = idadeNumero - 15;
+  
+    if (
+      isNaN(experienciaNumero) ||
+      experienciaNumero < 1 ||
+      experienciaNumero > experienciaMaximaPermitida
+    ) {
+      Alert.alert(
+        "Experiência inválida",
+        `Com ${idadeNumero} anos de idade, você pode informar no máximo ${experienciaMaximaPermitida} anos de experiência.`
+      );
+      return;
+    }
+  
     const novoCadastro = {
       id: Math.random().toString(),
       name,
       email,
-      age,
-      experience,
+      age: idadeNumero,
+      experience: experienciaNumero,
       phone,
       job: selectedJob,
       city: selectedCity,
       profilePhoto,
-      userId: user.id, // Vincula o cadastro ao ID do usuário logado
+      userId: user.id,
     };
-
+  
     try {
       await salvarCadastro(novoCadastro);
       Alert.alert("Cadastro Realizado", "Seu cadastro foi salvo com sucesso!", [
@@ -92,8 +114,7 @@ export default function Settings({ navigation, route }) {
             setSelectedJob("");
             setSelectedCity("");
             setProfilePhoto(null);
-
-            // Chama a função de callback (se existir) para atualizar a lista
+  
             if (route.params?.onCadastroRealizado) {
               route.params.onCadastroRealizado();
             }

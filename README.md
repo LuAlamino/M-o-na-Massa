@@ -34,13 +34,6 @@ Plataforma que conecta **profissionais autônomos** (faxineiras, mecânicos, enc
 
 ---
 
-## 📸 Preview  
-
-*(Adicione screenshots ou GIFs aqui)*  
-![Tela de Busca](link-para-imagem.png)  
-
----
-
 ## 🔧 Instalação  
 
 1. Clone o repositório:  
